@@ -14,19 +14,18 @@ var sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail(); // SendSmtpEmail | Values t
 
 const sendContactEmail = (body) => {  
   const { name, email, message } = body;
-  
   sendSmtpEmail = {
-      to: [{
-        email: 'vcardozof@gmail.com',
-        name: 'Mandarin y Mandarina'
-      }],
-      templateId: process.env.SENDINBLUE_CONTACT_TEMPLATE_ID,
-      params: {
-        name,
-        email,
-        message
-      },
-      subject: '[Mandarín y Mandarina] Nuevo mensaje de contacto',
+    to: [{
+      email: 'vcardozof@gmail.com',
+      name: 'Mandarin y Mandarina'
+    }],
+    templateId: Number(process.env.SENDINBLUE_CONTACT_TEMPLATE_ID),
+    params: {
+      name,
+      email,
+      message
+    },
+    subject: '[Mandarín y Mandarina] Nuevo mensaje de contacto',
   };
   
   apiInstance.sendTransacEmail(sendSmtpEmail).then((data) => {
